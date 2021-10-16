@@ -14,7 +14,6 @@
 <script>
 import getCollection from "../composables/getcollection";
 import getUser from "../composables/getuser";
-import { formatDistanceToNow } from "date-fns";
 import { computed, ref, onUpdated } from "vue"
 export default {
   setup() {
