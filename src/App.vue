@@ -8,7 +8,4 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[v-cloak] {
-  display: none;
-}
 </style>

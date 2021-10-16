@@ -10,7 +10,6 @@ const setCollection = (collectionName) => {
     
     try {
       await addDoc(collection(projectFirestore, collectionName), message);
-
     } catch(err) {
       error.value = err.message
     }

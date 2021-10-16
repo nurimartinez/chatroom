@@ -1,15 +1,12 @@
 <template>
-  <form @submit.prevent="signUp">
-    <label for="user">User name</label>
-    <input type="text" v-model="user" id="user" required>
-    <label for="email">Email</label>
-    <input type="email" v-model="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" v-model="password" id="password" required>
+  <form class="sign-form" @submit.prevent="signUp">
+    <input type="text" v-model="user" id="user" placeholder="User name" required>
+    <input type="email" v-model="email" id="email" placeholder="Email" required>
+    <input type="password" v-model="password" id="password" placeholder="Password" required>
     <div class="error" v-if="error">{{ error }}</div>
     <div class="buttons">
-      <div @click="close">Cancel</div>
-      <button type="submit">Sign Up</button>
+      <div class="sign-button" @click="close">Cancel</div>
+      <button class="sign-button" type="submit">Sign Up</button>
     </div>
   </form>
 </template>
@@ -24,6 +21,7 @@ export default {
     const email = ref('')
     const user = ref('')
     const password = ref('')
+    error.value = null;
 
     const signUp = async () => {
       await signup(email.value, password.value, user.value);
@@ -44,9 +42,3 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.error {
-  font-size: 0.75rem;
-  color: #ff6d6d;
-}
-</style>

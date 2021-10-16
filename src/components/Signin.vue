@@ -1,13 +1,11 @@
 <template>
-  <form @submit.prevent="signIn">
-    <label for="email">Email</label>
-    <input type="email" v-model="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" v-model="password" id="password" required>
+  <form class="sign-form" @submit.prevent="signIn">
+    <input type="email" v-model="email" id="email" placeholder="Email" required>
+    <input type="password" v-model="password" id="password" placeholder="Password" required>
     <div class="error" v-if="error">{{ error }}</div>
     <div class="buttons">
-      <div @click="close">Cancel</div>
-      <button type="submit">Sign Up</button>
+      <div class="sign-button" @click="close"><p>Cancel</p></div>
+      <button class="sign-button" type="submit">Sign in</button>
     </div>
   </form>
 </template>
@@ -39,10 +37,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.error {
-  font-size: 0.75rem;
-  color: #ff6d6d;
-}
-</style>

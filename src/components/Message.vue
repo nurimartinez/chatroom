@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="message-area">
     <textarea 
     placeholder="Write your message and press enter..."
     v-model="message"
@@ -22,9 +22,11 @@ export default {
 
     const sendMessage = async () => {
       const newMessage = {
+        id: user.value.uid,
         author: user.value.displayName,
+        photo: user.value.photoURL,
         message: message.value,
-        createdAt: timestamp
+        createdAt: timestamp 
       }
       await addMessage(newMessage)
       if(!error.value) message.value = '';
@@ -40,5 +42,25 @@ export default {
 </script>
 
 <style>
+form.message-area {
+  width: 85%;
+  max-width: 800px;
+}
 
+textarea {
+  display: block;
+  width: 100%;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  resize: none;
+  border: none;
+  border-radius: 0 0 20px 20px;
+  background-color: #949494;
+  border: 2px solid #000;
+  border-top: none;
+}
+
+textarea::placeholder {
+  color: #222222;
+}
 </style>

@@ -7,13 +7,12 @@ const error = ref(null);
 const signup = async (email, password, user) => {
 
   error.value = null;
-  const photos = [ './assets/parrot.jpg', './assets/rhino.jpg', './assets/turtle.jpg'];
+  const photos = [ './assets/user1.jpg', './assets/user2.jpg', './assets/user3.jpg'];
   const number = Math.round(Math.random()*2)
 
   try {
     const res = await createUserWithEmailAndPassword(projectAuth, email, password)
     if(!res) throw new Error('The sign up was not possible');
-    console.log(res.user)
     await updateProfile(projectAuth.currentUser, { displayName: user, photoURL: photos[number] })
     error.value = null
     return res
