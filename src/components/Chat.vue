@@ -22,18 +22,15 @@ export default {
 
     const formattedDocuments = computed(() => {
       let orderItems
-      if (documents.value) {
-        orderItems = documents.value.sort((a, b) => a.createdAt - b.createdAt)
-        orderItems = orderItems.map((doc) => {
-          let date = new Date(doc.createdAt.seconds*1000).toString()
-          date = date.slice(4, 24)
-          let time = date;
+      if (documents.value.length) {
+        orderItems = documents.value.map((doc) => {
+          let date = doc.createdAt.toDate().toString().slice(4, 24)
           let style = ''
           if(user.value) {
             if(user.value.uid === doc.id) style = 'current-user'
             else style = 'other-user'
           }
-          return { ...doc, createdAt: time, style };
+          return { ...doc, createdAt: date, style };
         });
       }
       return orderItems
@@ -47,6 +44,7 @@ export default {
 
     return {
       error,
+      documents,
       user,
       formattedDocuments,
       chat
